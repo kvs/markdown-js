@@ -87,7 +87,8 @@ exports.test_code = function(test) {
 };
 
 exports.test_bulletlist = function(test) {
-  var bl = function() { return this.md.dialect.block.lists.apply(this.md, arguments); };
+  md = this.md;
+  var bl = function() { return md.dialect.block.lists.apply(md, arguments); };
 
   test.deepEqual(
     bl( mk_block("* foo\n* bar"), [] ),
@@ -142,7 +143,7 @@ exports.test_bulletlist = function(test) {
    */
   test.deepEqual(
     bl( mk_block(" * \nfoo\nbar"), [ ] ),
-    [ [ "bulletlist", [ "listitem", "foo\nbar" ] ] ],
+    [ [ "bulletlist", [ "listitem", "\nfoo\nbar" ] ] ],
     "space+continuation lines");
 
 
