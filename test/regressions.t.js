@@ -361,7 +361,7 @@ exports.test_horizRule = function(test) {
     test.deepEqual(
       hr.call( this.md, mk_block(s), [] ),
       [ [ "hr" ] ],
-      "simple hr from " + uneval(s));
+      "simple hr from " + s);
   });
 
   test.done();
@@ -387,26 +387,27 @@ exports.test_blockquote = function(test) {
 };
 
 exports.test_referenceDefn = function(test) {
-  var rd = this.md.dialect.block.referenceDefn;
+  md = this.md;
+  var rd = md.dialect.block.referenceDefn;
 
   [ '[id]: http://example.com/  "Optional Title Here"',
     "[id]: http://example.com/  'Optional Title Here'",
     '[id]: http://example.com/  (Optional Title Here)'
   ].forEach( function(s) {
-    this.md.tree = ["markdown"];
+    md.tree = ["markdown"];
 
-    test.deepEqual(rd.call( this.md, mk_block(s) ), [], "ref processed");
+    test.deepEqual(rd.call( md, mk_block(s) ), [], "ref processed");
 
-    test.deepEqual(this.md.tree[ 1 ].references,
+    test.deepEqual(md.tree[ 1 ].references,
                  { "id": { href: "http://example.com/", title: "Optional Title Here" } },
                  "reference extracted");
   });
 
   // Check a para abbuting a ref works right
-  this.md.tree = ["markdown"];
+  md.tree = ["markdown"];
   var next = [];
-  test.deepEqual(rd.call( this.md, mk_block("[id]: example.com\npara"), next ), [], "ref processed");
-  test.deepEqual(this.md.tree[ 1 ].references, { "id": { href: "example.com" } }, "reference extracted");
+  test.deepEqual(rd.call( md, mk_block("[id]: example.com\npara"), next ), [], "ref processed");
+  test.deepEqual(md.tree[ 1 ].references, { "id": { href: "example.com" } }, "reference extracted");
   test.deepEqual(next, [ mk_block("para") ], "paragraph put back into blocks");
 
   test.done();
