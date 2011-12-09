@@ -40,6 +40,9 @@
     "type" : "git",
     "url" : "git://github.com/evilstreak/markdown-js.git"
   },
+  "devDependencies": {
+    "nodeunit": ""
+  },
   "main" : "./lib/index.js",
   "bin": {
     "md2html": "./bin/md2html.js"
