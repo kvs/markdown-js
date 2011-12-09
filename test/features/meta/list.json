@@ -2,10 +2,10 @@
   ["ul",
     { "id" : "list" },
     ["li",
-      "here's a\nloose list"
+      ["p", "here's a\nloose list" ]
     ],
     ["li",
-      "it might confuse the\nblock_meta routine"
+      ["p", "it might confuse the\nblock_meta routine" ]
     ]
   ]
 ]
