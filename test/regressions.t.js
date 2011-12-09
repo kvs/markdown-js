@@ -25,26 +25,26 @@ exports.split_block = function(test) {
 };
 
 exports.test_headers = function(test) {
-  var h1 = this.md.dialect.block.atxHeader( "# h1 #\n\n", [] ), h2;
+  var h1 = this.md.dialect.block.atxHeader.call(this.md, "# h1 #\n\n", [] ), h2;
 
   test.deepEqual(
     h1,
-    this.md.dialect.block.setextHeader( "h1\n===\n\n", [] ),
+    this.md.dialect.block.setextHeader.call(this.md, "h1\n===\n\n", [] ),
     "Atx and Setext style H1s should produce the same output" );
 
   test.deepEqual(
-    this.md.dialect.block.atxHeader("# h1\n\n"),
+    this.md.dialect.block.atxHeader.call(this.md, "# h1\n\n"),
     h1,
     "Closing # optional on atxHeader");
 
   test.deepEqual(
-    h2 = this.md.dialect.block.atxHeader( "## h2\n\n", [] ),
+    h2 = this.md.dialect.block.atxHeader.call(this.md, "## h2\n\n", [] ),
     [["header", {level: 2}, "h2"]],
     "Atx h2 has right level");
 
   test.deepEqual(
     h2,
-    this.md.dialect.block.setextHeader( "h2\n---\n\n", [] ),
+    this.md.dialect.block.setextHeader.call(this.md, "h2\n---\n\n", [] ),
     "Atx and Setext style H2s should produce the same output" );
 
   test.done();
