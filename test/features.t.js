@@ -34,7 +34,7 @@ function test_dialect( dialect, features ) {
             catch( e ) {
               test.ok( 0, "Failed with error on " + test_name + ": " + e );
               if ( e.stack )
-                asserts.diag( e.stack );
+                console.log( e.stack );
             }
           }
           else {
