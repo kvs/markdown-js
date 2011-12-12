@@ -6,3 +6,11 @@ tell application "Foo"
 end tell
 	tab
 ```
+
+```ruby
+    # Default GET request for new pages.
+    get '*' do
+      content_type :html
+      File.read 'public/index.html'
+    end
+```

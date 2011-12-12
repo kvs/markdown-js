@@ -6,5 +6,11 @@
     ["code",
       "tell application \"Foo\"\n    beep\nend tell\n\ttab"
     ]
+  ],
+  [ "pre",
+    { "class": "ruby" },
+    [ "code",
+      "# Default GET request for new pages.\n    get '*' do\n      content_type :html\n      File.read 'public/index.html'\n    end"
+    ]
   ]
 ]
