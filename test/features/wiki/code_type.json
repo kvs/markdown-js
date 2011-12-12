@@ -1,0 +1,7 @@
+[ "html",
+  [ "p", "Here is an example of setting the code type:" ],
+  [ "pre",
+    { "class": "perl" },
+    [ "code", "use strict;\nprint $ENV{PATH};" ]
+  ]
+]

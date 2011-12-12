@@ -77,6 +77,9 @@ dialects.Gruber = [
 dialects.Maruku = dialects.Gruber.slice( 0 );
 dialects.Maruku.push( "meta", "definition_lists" );
 
+dialects.Instiki = dialects.Gruber.slice( 0 );
+dialects.Instiki.push( "wiki" );
+
 // Create tests
 for (var d in dialects) {
   test_dialect(d, dialects[ d ]);

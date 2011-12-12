@@ -1,0 +1,6 @@
+Here is an example of setting the code type:
+
+```perl
+use strict;
+print $ENV{PATH};
+```
