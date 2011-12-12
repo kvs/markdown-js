@@ -2,7 +2,7 @@
   ["p",
     "An ",
     ["a",
-      { "href" : "InlinePage"},
+      { "href" : "inlinepage"},
       "inline link"
     ],
     " with a title."
