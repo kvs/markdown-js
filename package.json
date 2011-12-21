@@ -41,7 +41,8 @@
     "url" : "git://github.com/evilstreak/markdown-js.git"
   },
   "devDependencies": {
-    "nodeunit": ""
+    "nodeunit": "",
+    "requirejs": ""
   },
   "main" : "./lib/index.js",
   "bin": {
