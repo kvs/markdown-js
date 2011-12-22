@@ -1,5 +1,11 @@
-var Markdown = require('../lib/markdown').Markdown,
-    mk_block = Markdown.mk_block;
+requirejs = require('requirejs');
+requirejs.config({
+  nodeRequire: require,
+  baseUrl: 'lib'
+});
+
+requirejs(['markdown', 'gruber'], function(Markdown) {
+var mk_block = Markdown.mk_block;
 
 exports.setUp = function(callback) {
   this.md = new Markdown();
@@ -513,3 +519,4 @@ exports.inline_autolink = function(test) {
                                   "autolink III" );
   test.done();
 };
+});

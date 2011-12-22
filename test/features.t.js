@@ -1,4 +1,8 @@
-var markdown = require('../lib/markdown');
+requirejs = require('requirejs');
+requirejs.config({
+  nodeRequire: require,
+  baseUrl: 'lib'
+});
 
 function test_dialect( dialect, features ) {
   var dialect_test = exports[ "test_" + dialect ] = {};
@@ -27,9 +31,10 @@ function test_dialect( dialect, features ) {
             try {
               var json_text = slurpFile( test_path + tests[ t ] + ".json" );
               var json = JSON.parse( json_text );
-
-              var output = markdown.toHTMLTree( text, dialect );
-              test.deepEqual( output, json, test_name );
+              requirejs(['markdown', dialect.toLowerCase()], function(markdown) {
+                var output = markdown.toHTMLTree( text, dialect );
+                test.deepEqual( output, json, test_name );
+              });
             }
             catch( e ) {
               test.ok( 0, "Failed with error on " + test_name + ": " + e );
